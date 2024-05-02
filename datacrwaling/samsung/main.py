@@ -4,10 +4,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 
-from bs4 import BeautifulSoup
-import pandas as pd
-import time
-
 import sys
 import os
 # 부모 폴더의 경로를 가져옵니다.
@@ -29,3 +25,7 @@ driver.find_element(By.ID, "4_anchor").click() # <회사 개요> 클릭
 
 # table 데이터 가져오기
 tables = utils.get_table_data(driver)
+
+for table in tables:
+    print(table)
+    print('-----------------------------------')
