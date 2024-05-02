@@ -1,8 +1,9 @@
 from bs4 import BeautifulSoup 
 import pandas as pd
 from selenium.webdriver.common.by import By
-def get_table_data(driver):    
-    results = []  
+
+def get_table_data(driver):
+    result = []
     
     # Detail page 활성화
     iframe = driver.find_element(By.ID, 'ifrm')
@@ -14,6 +15,7 @@ def get_table_data(driver):
     
     # 테이블 태그 요소 모두 찾기
     tables = soup.find_all('table')
+    results = []  
     
     # 테이블의 각 행과 열에서 데이터 추출
     for table in tables:
@@ -36,7 +38,6 @@ def get_table_data(driver):
                 item = cell.get_text(strip=True)
                 item = int(item) if item.isdigit() else item
 
-                ## colspan 만큼 데이터 더 추가
                 for _ in range(colspan):
                     temp_row_data.append((item, rowspan))
                     row_data.append(item)
@@ -51,17 +52,21 @@ def get_table_data(driver):
         # rowspan 데이터 추가하기
         for row_idx, row in enumerate(temp_data):
             for col_idx, cell in enumerate(row):
-                
                 item, rowspan = cell
                 
                 if rowspan > 1:
                     for i in range(1, rowspan):
-                        data[row_idx + i].insert(col_idx, item)         
-        
-        df = pd.DataFrame(data[1:], columns=data[0])
-        results.append(df)
+                        data[row_idx + i].insert(col_idx, item)
+        try:
+            df = pd.DataFrame(data[1:], columns=data[0])        
+            results.append(df)
+            
+        except Exception as e:
+            df = pd.DataFrame(data[2:], columns=data[1])
+            results.append(df)
         
     # Detail page 비활성화
     driver.switch_to.default_content()
     
     return results
+    

@@ -1,8 +1,7 @@
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
+import time
 
 import sys
 import os
@@ -16,16 +15,39 @@ url = 'https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240312000736'
 driver = webdriver.Chrome()
 driver.get(url)
 
-# 사이드바가 닫혀있으면 열기
+## 사이드 바 버튼 가져오기
 sidebar_btn = driver.find_element(By.ID, "wideBtn")
-if sidebar_btn.get_attribute('class') == 'btn_wide_off':
-    sidebar_btn.click()
+
+cnt = 0
+wanted_pages = [4, 5, 11, 12, 13, 15, 16, ] ## 크롤링 원하는 페이지 ## 왠지 모르겠는데 101페이지 py파일에서 크롤링이 안됨...
+
+for i in range(101, 102):
+    # side bar 안 열려 있으면 열기
+    if sidebar_btn.get_attribute('class') == 'btn_wide_off':
+        sidebar_btn.click()
+
+    ## 페이지 이동
+    try:
+        page = driver.find_element(By.ID, f"{i}_anchor")
+        page_title = page.text
+        print(page_title)
+
+        page.click()
+    except NoSuchElementException:
+        continue
+        
+    time.sleep(3)
+
+    ## 테이블 가져오기
+    tables = utils.get_table_data(driver)
+    print(f"cur page : {i}\t table count : {len(tables)}")
+    cnt += len(tables)
     
-driver.find_element(By.ID, "4_anchor").click() # <회사 개요> 클릭
+    ## 테이블 csv로 변환
+    for idx, table in enumerate(tables):
+        table.to_csv(f'data/{page_title}({idx+1}).csv', index=False)
 
-# table 데이터 가져오기
-tables = utils.get_table_data(driver)
-
-for table in tables:
-    print(table)
-    print('-----------------------------------')
+    print("success crawling")
+    
+    
+print(cnt)
