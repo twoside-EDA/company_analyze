@@ -1,0 +1,16 @@
+,id,product,sector
+0,0,TV,DX 부문
+1,1,모니터,DX 부문
+2,2,냉장고,DX 부문
+3,3,세탁기,DX 부문
+4,4,에어컨,DX 부문
+5,5,스마트폰,DX 부문
+6,6,네트워크시스템,DX 부문
+7,7,컴퓨터,DX 부문
+8,8,DRAM,DS 부문
+9,9,NAND Flash,DS 부문
+10,10,모바일AP,DS 부문
+11,11,스마트폰용 OLED 패널,SDC
+12,12,디지털 콕핏(Digital Cockpit),Harman
+13,13,카오디오,Harman
+14,14,포터블스피커,Harman
