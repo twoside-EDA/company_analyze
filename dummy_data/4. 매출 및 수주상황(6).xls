@@ -1,0 +1,9 @@
+판매자,판 매 경 로,판 매 경 로,판 매 경 로,판 매 경 로,판 매 경 로,판 매 경 로,판 매 경 로,소비자
+생산법인,판매법인,Retailer,Retailer,Retailer,Retailer,Retailer,Retailer,소비자
+생산법인,판매법인,Dealer,Dealer,Dealer,Retailer,Retailer,Retailer,소비자
+생산법인,판매법인,Distributor,Distributor,Dealer,Dealer,Dealer,Retailer,소비자
+생산법인,판매법인,"통신사업자, Automotive OEM","통신사업자, Automotive OEM","통신사업자, Automotive OEM","통신사업자, Automotive OEM","통신사업자, Automotive OEM","통신사업자, Automotive OEM",소비자
+생산법인,판매법인,직접판매(B2B 및 온라인),직접판매(B2B 및 온라인),직접판매(B2B 및 온라인),직접판매(B2B 및 온라인),직접판매(B2B 및 온라인),직접판매(B2B 및 온라인),소비자
+생산법인,물류법인,판매법인,Retailer,Retailer,Retailer,Retailer,Retailer,소비자
+물류법인,판매법인,생산법인,Dealer,Dealer,Dealer,Retailer,Retailer,소비자
+물류법인,판매법인,생산법인,Distributor,Distributor,Dealer,Dealer,Retailer,소비자
