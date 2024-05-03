@@ -3,7 +3,7 @@ import pandas as pd
 from selenium.webdriver.common.by import By
 
 def get_table_data(driver):
-    result = []
+    results = []  
     
     # Detail page 활성화
     iframe = driver.find_element(By.ID, 'ifrm')
@@ -15,7 +15,7 @@ def get_table_data(driver):
     
     # 테이블 태그 요소 모두 찾기
     tables = soup.find_all('table')
-    results = []  
+
     
     # 테이블의 각 행과 열에서 데이터 추출
     for table in tables:
