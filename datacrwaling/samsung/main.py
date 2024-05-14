@@ -19,7 +19,7 @@ driver.get(url)
 sidebar_btn = driver.find_element(By.ID, "wideBtn")
 
 cnt = 0
-wanted_pages = [4, 5, 11, 12, 13, 15, 16, ] ## 크롤링 원하는 페이지 ## 왠지 모르겠는데 101페이지 py파일에서 크롤링이 안됨...
+wanted_pages = [4, 5, 9, 11, 12, 13, 15, 16, ] ## 크롤링 원하는 페이지 ## 왠지 모르겠는데 101페이지 py파일에서 크롤링이 안됨...
 
 for i in wanted_pages:
     # side bar 안 열려 있으면 열기
